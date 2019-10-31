@@ -20,10 +20,10 @@ function menuOpen(){
   var hamburger = document.getElementById('hamburger');
   if (container.style.marginTop == "150px"){
     container.style.marginTop = "60px";
-    hamburger.style.backgroundImage = "url('./hamburger.png')";
+    hamburger.style.backgroundImage = "url('./img/hamburger.png')";
   } else {
     container.style.marginTop = "150px";
-    hamburger.style.backgroundImage = "url('./cross.png')";
+    hamburger.style.backgroundImage = "url('./img/cross.png')";
 
   }
 
