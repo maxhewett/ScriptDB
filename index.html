@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScriptDB</title>
+  <link href="./index.css" rel="stylesheet"/>
+  <script src="./index.js" type="text/javascript"></script>
+  <script src="./autosize.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="logo"><img src="./img/macintosh_128k.png"/></div>
+  <div id="nav">
+    <button id="hamburger" type="button" onclick="menuOpen();"></button>
+    <ul>
+      <li id="active"><img src="img/com.png"/><a href="">Commands</a></li>
+      <li><img src="img/scr.png"/><a href="./scripts.html">Scripts</a></li>
+      <div id="search"><input id="searchbox" type="text" placeholder="search" onkeyup="searchCode();"/></div>
+    </ul>
+  </div>
+  <ul id="container"><!--start container-->
+    <div id="termsplash">
+      <div id="titlebar"><div id="dots"><a id="red" onclick="closeTerm();"></a><a id="yellow"></a><a id="green"></a></div></div>
+      <div id="mainwindow">
+        <p>Last login: today on ttys000</p><p id="prompt">bash-3.2$</p>
+        <textarea onkeyup="textAreaAdjust(this)" onkeydown="textAreaAdjust(this)" id="term" placeholder="Paste the commands you want to save in here!"></textarea>
+      </div>
+    </div>
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide1" onclick="hide1();"></button>
+        <a><h2>Remove managed Preferences</h2></a>
+        <hr>
+      <div id="wrap1" class="wrap"><!--start wrap-->
+        <p>A symptom of managed preferences being installed is the error "you are not allowed to open this application".<br><br>This first command deletes all managed preferences installed at the computer-level.</p>
+        <p class="codeblock">sudo dscl . -mcxdelete /Computers/localhost</p>
+        <p>This second command deletes all managed preferences installed at the user level.</p>
+        <p class="codeblock">sudo dscl . -mcxdelete /Users/username</p>
+        <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+      </div><!--end wrap1-->
+    </li><!--end codeccont-->
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide2" onclick="hide2();"></button>
+        <a><h2>Create a new admin user</h2></a>
+        <hr>
+        <div id="wrap2" class="wrap"><!--start wrap-->
+          <p>If for some reason you can't login to a Mac or just need a new admin user, use these commands.<br><br>First, we need to boot into <strong>Single-User Mode</strong>. To do this, restart the computer while holding <strong>&#8984;+S</strong>.<br><br>Then, once the text has stopped scrolling, enter this command to mount the filesystem:</p>
+          <p class="codeblock">mount -uw /</p>
+          <p>Next, delete the <strong>.AppleSetupDone</strong> file. This tells the computer to run the setup assistant again - which is where we can create a new admin user.</p>
+          <p class="codeblock">rm -r .AppleSetupDone</p>
+          <p>Now, restart. You can do this by holding the power button or by typing the below.</p>
+          <p class="codeblock">reboot</p>
+          <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+      </div><!--end wrap2-->
+    </li><!--end codeccont-->
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide3" onclick="hide3();"></button>
+        <a><h2>Jamf | Pro Commands</h2></a>
+        <hr>
+        <div id="wrap3" class="wrap"><!--start wrap-->
+          <p>These are some commands that are useful to use on an enrolled device to troubleshoot issues.<br><br>The first thing to do is to login as the local admin:</p>
+          <p class="codeblock">login sadmin</p>
+          <p>The first command to learn is the one we use to force a Mac to check that it is managed. This can be useful if a device is not receiving the correct configuration:</p>
+          <p class="codeblock">sudo jamf manage</p>
+          <p>The next command we use is to force the mac to check-in and run any policies that are pending. This also will tell us the policy status via the command line and show us any output live.</p>
+          <p class="codeblock">sudo jamf policy</p>
+          <p>Another command that is useful is this one. It is used to remove the jamf management framework in order to re-enrol it again.</p>
+          <p class="codeblock">sudo jamf removeframework</p>
+          <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+      </div><!--end wrap3-->
+    </li><!--end codeccont-->
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide4" onclick="hide4();"></button>
+        <a><h2>Break Down Disk Usage</h2></a>
+        <hr>
+      <div id="wrap4" class="wrap"><!--start wrap4-->
+        <p>Although you can check usage on a Mac in the System Information > storage section, sometimes it can be quite vague and just say "other".<br><br>This command will show you all of the files that you are allowed to access, and tell you the filesize.<br><br>This is one of those commands that is best run as <strong>sadmin</strong>.<br><br>In this first command, we are checking the size of all files in the Users folder. </p>
+        <p class="codeblock">sudo du -sh /Users/*<br><br>8.3M	/users/Shared<br>3.1G	/users/max.hewett<br>2.1M	/users/student</p>
+        <p>We can see that it has returned the size of each of the folders in the Users folder. To drill down into a specific folder, we just update our command slightly - as seen below:</p>
+        <p class="codeblock">sudo du -sh /Users/max.hewett*</p>
+        <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+      </div><!--end wrap4-->
+    </li><!--end codeccont-->
+  </ul><!--end container-->
+  <div id="footer">
+    <img src="./img/crest.png"/>
+    <p>Max Hewett | St. Cuthbert's College</p>
+    <a href="mailto:max.hewett@stcuthberts.school.nz"><img src="./img/help.png"/></a>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScriptDB</title>
+  <link href="./index.css" rel="stylesheet"/>
+  <script src="./index.js" type="text/javascript"></script>
+</head>
+<body>
+  <div id="logo"><img src="./img/macintosh_128k.png"/></div>
+  <div id="nav">
+    <button id="hamburger" type="button" onclick="menuOpen();"></button>
+    <ul>
+      <li id="active"><img src="./img/com.png"/><a href="./index.html">Commands</a></li>
+      <li><img src="./img/scr.png"/><a href="">Scripts</a></li>
+      <div id="search"><input id="searchbox" type="text" placeholder="search" onkeyup="searchCode();"/></div>
+    </ul>
+  </div>
+  <ul id="container"><!--start container-->
+    <div id="termsplash">
+      <div id="titlebar"><div id="dots"><a id="red" onclick="closeTerm();"></a><a id="yellow" onclick="minTerm();"></a><a id="green" onclick="fullTerm();"></a></div></div>
+      <div id="mainwindow">
+        <p>Last login: today on ttys000</p><p id="prompt">bash-3.2$</p>
+        <textarea onkeyup="textAreaAdjust(this)" onkeydown="textAreaAdjust(this)" id="term" placeholder="Paste the commands you want to save in here!"></textarea>
+      </div>
+    </div>
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide1" onclick="hide1();"></button>
+        <a><h2>Kill iMessage</h2></a>
+        <hr>
+      <div id="wrap1" class="wrap"><!--start wrap-->
+        <p>The kill iMessage script is pretty self-explanatory.</p>
+          <p class="scriptblock"><bash>#!/bin/bash</bash><br>startTime="08:30"<br>endTime="15:15"<br>currentTime=$(date +"%H:%M")<br>currentDate=`date`<br>for i in 1 2 3 4 5<br>do<br>if pgrep -x "Messages" > /dev/null; then<br>if [[ ! "$currentTime" < "$startTime" && ! "$currentTime" > "$endTime" ]]; then<br>echo "Messages was open and the time is between 8.30 and 3.15!"<br>killall Messages<br>echo "Messages killed & warning displayed at" `date`<br>test1=`/Library/Application\ Support/JAMF/bin/jamfHelper.app/Contents/MacOS/jamfHelper -windowType utility -heading "Messages Restricted" -icon "/System/Applications/Messages.app/Contents/Resources/MessagesAppIcon.icns" -description "Messages is resctricted from running during school hours. This incident has been recorded. You will be able to use Messages again after school." -button1 "Acknowledge" timeout 5`;<br>else<br>echo "Time is outside of school hours: " `date`<br>fi<br>else<br>echo "Messages was not open at" `date`<br>fi<br>sleep 60<br>done<br><br><date>updated 23/10/2019</date>
+          </p>
+          <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+          <button class="download">Download<img src="./img/download.png"/></button>
+      </div><!--end wrap1-->
+    </li><!--end codeccont-->
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide2" onclick="hide2();"></button>
+        <a><h2>Kerberise Printers</h2></a>
+        <hr>
+        <div id="wrap2" class="wrap"><!--start wrap-->
+          <p>With the new Kerberos SSO extension, sometimes you need to kerberise a printer. You can kerberise all of the printers with this script.</p>
+          <p class="scriptblock">
+            <bash>#!/bin/bash</bash><br>sudo lpadmin -p Art_Epsom_Large -o auth-info-required=negotiate<br>sudo lpadmin -p BeattieDeans -o auth-info-required=negotiate<br>sudo lpadmin -p BoardingDunblane -o auth-info-required=negotiate<br>sudo lpadmin -p BoardingElgin -o auth-info-required=negotiate<br>sudo lpadmin -p BoardingMelrose -o auth-info-required=negotiate<br>sudo lpadmin -p BoardingOffice -o auth-info-required=negotiate<br>sudo lpadmin -p CCWSportsWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p CCWSwimSchool -o auth-info-required=negotiate<br>sudo lpadmin -p Chapel -o auth-info-required=negotiate<br>sudo lpadmin -p EllisArtGeneral -o auth-info-required=negotiate<br>sudo lpadmin -p EllisDownstairsPro5200 -o auth-info-required=negotiate<br>sudo lpadmin -p EllisUpstairsPro5200 -o auth-info-required=negotiate<br>sudo lpadmin -p EllisWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p Follow-me-anywhere -o auth-info-required=negotiate<br>sudo lpadmin -p HunterWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p ICAccounts -o auth-info-required=negotiate<br>sudo lpadmin -p ICBasement -o auth-info-required=negotiate<br>sudo lpadmin -p ICEnglishWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p ICGroundScience -o auth-info-required=negotiate<br>sudo lpadmin -p ICILT -o auth-info-required=negotiate<br>sudo lpadmin -p ICL1Atrium -o auth-info-required=negotiate<br>sudo lpadmin -p ICL2Library -o auth-info-required=negotiate<br>sudo lpadmin -p ICLanguagesWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p ICTechnologyWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p IonaWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p JSMeetingRoom -o auth-info-required=negotiate<br>sudo lpadmin -p JSPPLCWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p JSReception -o auth-info-required=negotiate<br>sudo lpadmin -p JSResourceRoom -o auth-info-required=negotiate<br>sudo lpadmin -p JSY5Upstairs -o auth-info-required=negotiate<br>sudo lpadmin -p JSY6Downstairs -o auth-info-required=negotiate<br>sudo lpadmin -p LinkCommunications -o auth-info-required=negotiate<br>sudo lpadmin -p MSOffice -o auth-info-required=negotiate<br>sudo lpadmin -p MSY7Downstairs -o auth-info-required=negotiate<br>sudo lpadmin -p MSY7Upstairs -o auth-info-required=negotiate<br>sudo lpadmin -p MSY8Downstairs -o auth-info-required=negotiate<br>sudo lpadmin -p MSY8Upstairs -o auth-info-required=negotiate<br>sudo lpadmin -p PACDownstairs -o auth-info-required=negotiate<br>sudo lpadmin -p PACMusicWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p PACReception -o auth-info-required=negotiate<br>sudo lpadmin -p PACUpstairs -o auth-info-required=negotiate<br>sudo lpadmin -p PLCCentreWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p RhodesRelief -o auth-info-required=negotiate<br>sudo lpadmin -p RhodesScienceDownstairs -o auth-info-required=negotiate<br>sudo lpadmin -p RhodesScienceUpstairs -o auth-info-required=negotiate<br>sudo lpadmin -p RobertsonAdmissions -o auth-info-required=negotiate<br>sudo lpadmin -p RobertsonDepPrincipal -o auth-info-required=negotiate<br>sudo lpadmin -p RobertsonPnC -o auth-info-required=negotiate<br>sudo lpadmin -p RobertsonPrincipal -o auth-info-required=negotiate<br>sudo lpadmin -p RobertsonPrintRoom -o auth-info-required=negotiate<br>sudo lpadmin -p RobertsonReception -o auth-info-required=negotiate<br>sudo lpadmin -p SportsPEWorkroom -o auth-info-required=negotiate<br>sudo lpadmin -p WapitiHealthCentre -o auth-info-required=negotiate<br>
+            <bash>exit 0</bash><br>
+            <date>updated 10/10/19</date>
+          </p>
+          <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+          <button class="download">Download<img src="./img/download.png"/></button>
+      </div><!--end wrap2-->
+    </li><!--end codeccont-->
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide3" onclick="hide3();"></button>
+        <a><h2>ARD Kickstart</h2></a>
+        <hr>
+        <div id="wrap3" class="wrap"><!--start wrap-->
+          <p>Sometimes you need to kickstart the <strong>Apple Remote Desktop</strong> service. This is for when you are unable to remote into a Mac.</p>
+          <p class="scriptblock"><bash>#!/bin/bash</bash><br>
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -allUsers -privs -all -clientopts -setmenuextra -menuextra no<br><date>updated 15/05/2019</date></p>
+          <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+          <button class="download">Download<img src="./img/download.png"/></button>
+      </div><!--end wrap3-->
+    </li><!--end codeccont-->
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide4" onclick="hide4();"></button>
+        <a><h2>Check, Then Remove</h2></a>
+        <hr>
+      <div id="wrap4" class="wrap"><!--start wrap4-->
+        <p>Sometimes we want to check if something exists before attempting to remove it. In this example, we're checking if Office 2019 exists before removing 2011.</p>
+        <p class="scriptblock"><bash>!#/bin/bash</bash><br>FILE=/Applications/Microsoft\ Word.app<br>if test -f "$FILE"; then<br>rm -r /Applications/Microsoft\ Office\ 2011<br>echo "Office 2011 succesfully removed"<br>else<br>echo "Office 2011 Not installed"<br>fi<br><bash>exit 0</bash><br><date>updated 03/09/2019</date></p>
+        <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+        <button class="download">Download<img src="./img/download.png"/></button>
+      </div><!--end wrap4-->
+    </li><!--end codeccont-->
+  </ul><!--end container-->
+  <div id="footer">
+    <img src="./img/crest.png"/>
+    <p>Max Hewett | St. Cuthbert's College</p>
+    <a href="mailto:max.hewett@stcuthberts.school.nz"><img src="./img/help.png"/></a>
+  </div>
+</body>
+
+</html>
