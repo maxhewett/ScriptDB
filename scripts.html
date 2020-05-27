@@ -5,6 +5,13 @@
   <link href="./index.css" rel="stylesheet"/>
   <script src="./index.js" type="text/javascript"></script>
 </head>
+<div id="popup">
+  <img id="setcross" src="img/cross.png" onclick="closePopup();">
+  <h1>settings</h1>
+  <hr>
+  <span><p>Hide copy/paste terminal</p><input type="checkbox" id="switch" /><label for="switch" onclick="hideTerm();">Toggle</label></span>
+  <br><br>
+</div>
 <body>
   <div id="logo"><img src="./img/Macintosh_128k.png"/></div>
   <div id="nav">
@@ -75,9 +82,10 @@ sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resourc
     </li><!--end codeccont-->
   </ul><!--end container-->
   <div id="footer">
+      <a id="gear" onclick="popupSH();"><img onclick="popupSH();" src="img/gear.png" alt="Settings"/></a>
     <img src="./img/crest.png"/>
-    <p>Max Hewett | St. Cuthbert's College</p>
-    <a href="mailto:max.hewett@stcuthberts.school.nz"><img src="./img/help.png"/></a>
+    <p>Max Hewett | 2020</p>
+    <a id="help" href="mailto:max.hewett@stcuthberts.school.nz"><img src="./img/help.png"/></a>
   </div>
 </body>
 

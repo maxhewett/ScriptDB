@@ -24,7 +24,6 @@ function menuOpen(){
   } else {
     container.style.marginTop = "150px";
     hamburger.style.backgroundImage = "url('./img/cross.png')";
-
   }
 
 }
@@ -178,5 +177,75 @@ function hide4(){
   } else {
     wrap4.style.display = "block";
     hide4.style.transform = "rotate(0deg)";
+  }
+}
+function hide5(){
+  var wrap5 = document.getElementById('wrap5');
+  var hide5 = document.getElementById('hide5');
+  if (wrap5.style.display == "block"){
+    wrap5.style.display = "none";
+    hide5.style.transform = "rotate(-90deg)";
+  } else {
+    wrap5.style.display = "block";
+    hide5.style.transform = "rotate(0deg)";
+  }
+}
+
+//popup js
+function popupSH(){
+  var popup = document.getElementById('popup');
+  var setcross = document.getElementById('setcross');
+  var spin = document.getElementById('spin');
+    popup.style.right = "0";
+    setcross.style.transform = "rotate(-90deg)";
+    spin.style.right = "0";
+}
+
+function closePopup(){
+  var popup = document.getElementById('popup');
+  var setcross = document.getElementById('setcross');
+    popup.style.right = "-75vw";
+    setcross.style.transform = "rotate(0deg)";
+    spin.style.right = "-75vw";
+}
+
+//term window hide/show
+function hideTerm(){
+  var termsplash = document.getElementById('termsplash');
+  if (termsplash.style.display == "none"){
+    termsplash.style.display = "block";
+  } else {
+    termsplash.style.display = "none";
+  }
+}
+
+//theme change
+function changeTheme(){
+  var container = document.getElementById('container');
+  var nav = document.getElementById('nav');
+    var main = document.getElementsByTagName("BODY")[0];
+  if (nav.style.color == "white"){
+    container.style.backgroundColor = "#FFF";
+    container.style.color = "#000";
+    container.style.borderTop = "#EAEAEA";
+    nav.style.color = "black";
+    nav.style.backgroundColor = "#D9D9D9";
+    main.style.backgroundColor = "#D9D9D9";
+  } else {
+    container.style.backgroundColor = "#383D47";
+    container.style.color = "#f9f9f9";
+    nav.style.color = "white";
+    nav.style.backgroundColor = "#282C34";
+    main.style.backgroundColor = "#282C34";
+  }
+}
+function spinMoon(){
+    var spin = document.getElementById('spin');
+  if (spin.style.borderRadius == "0px"){
+    spin.style.transform = "rotate(180deg)";
+    spin.style.borderRadius = "10px";
+  } else {
+    spin.style.transform = "rotate(0)";
+    spin.style.borderRadius = "0px";
   }
 }

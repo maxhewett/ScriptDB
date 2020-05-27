@@ -7,6 +7,14 @@
   <script src="./autosize.js" type="text/javascript"></script>
 </head>
 <body>
+<div id="popup">
+  <img id="setcross" src="img/cross.png" onclick="closePopup();">
+  <h1>settings</h1>
+  <hr>
+  <span><p>Hide copy/paste terminal</p><input type="checkbox" id="switch" /><label for="switch" onclick="hideTerm();">Toggle</label></span><br><br>
+  <span><p>Light mode</p><input type="checkbox" id="switch2" /><label for="switch2" onclick="changeTheme(); spinMoon();">Toggle</label></span>
+  <br><br>
+</div>
   <div id="logo"><img src="./img/Macintosh_128k.png"/></div>
   <div id="nav">
     <button id="hamburger" type="button" onclick="menuOpen();"></button>
@@ -35,7 +43,7 @@
         <p class="codeblock">sudo dscl . -mcxdelete /Users/username</p>
         <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
       </div><!--end wrap1-->
-    </li><!--end codeccont-->
+    </li><!--end codeccont1-->
     <li class="codecont"><!--start codeccont-->
         <button class="chevron" id="hide2" onclick="hide2();"></button>
         <a><h2>Create a new admin user</h2></a>
@@ -49,7 +57,7 @@
           <p class="codeblock">reboot</p>
           <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
       </div><!--end wrap2-->
-    </li><!--end codeccont-->
+    </li><!--end codeccont2-->
     <li class="codecont"><!--start codeccont-->
         <button class="chevron" id="hide3" onclick="hide3();"></button>
         <a><h2>Jamf | Pro Commands</h2></a>
@@ -65,7 +73,7 @@
           <p class="codeblock">sudo jamf removeframework</p>
           <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
       </div><!--end wrap3-->
-    </li><!--end codeccont-->
+    </li><!--end codeccont3-->
     <li class="codecont"><!--start codeccont-->
         <button class="chevron" id="hide4" onclick="hide4();"></button>
         <a><h2>Break Down Disk Usage</h2></a>
@@ -77,13 +85,25 @@
         <p class="codeblock">sudo du -sh /Users/max.hewett*</p>
         <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
       </div><!--end wrap4-->
-    </li><!--end codeccont-->
+    </li><!--end codeccont4-->
+    <li class="codecont"><!--start codeccont-->
+        <button class="chevron" id="hide5" onclick="hide5();"></button>
+        <a><h2>Tail Jamf Log</h2></a>
+        <hr>
+      <div id="wrap5" class="wrap"><!--start wrap4-->
+        <p>This is a useful script to check what the jamfd is doing on a Mac. I use it to keep track of things like Logic Pro installs to see if the Mac has received the command.</p>
+        <p class="codeblock">tail -20 /var/log/jamf.log<br><br>Tue May 26 11:17:08 MBP jamf[77032]: Executing Policy Auto-Uninstall Papercut<br>Tue May 26 11:17:09 MBP jamf[77032]: Uninstalled PaperCutLaunchAgent.pkg.<br>Tue May 26 11:17:09 MBP jamf[77032]: Uninstalled PCClient15a.pkg.<br>Tue May 26 11:17:10 MBP jamf[77032]: Executing Policy AutoProxy - Off<br>Tue May 26 11:17:12 MBP jamf[77032]: Executing Policy Turn off printer sharing<br>Tue May 26 11:17:13 MBP jamf[77032]: Executing Policy Update Inventory<br>Tue May 26 11:17:14 MBP jamf[77032]: Checking for patches...<br>Tue May 26 11:17:14 MBP jamf[77032]: No patch policies were found.<br>Tue May 26 11:17:28 MBP jamf[77032]: Removing existing launchd task /Library/LaunchDaemons/com.jamfsoftware.task.bgrecon.plist...<br>Tue May 26 11:23:59 MBP jamf[77977]: Checking for policies triggered by "recurring check-in" for user "max.hewett"...</p>
+        <p>We can see that it has returned the most recent 20 log entries for the jamf log. This will tell us what's happening - for example, at 11:17:09, the Paper Cut launchagent was deleted.</p>
+        <a class="terminal" href="ssh://sadmin@localhost">Launch Terminal<img src="./img/terminal.png"/></a>
+      </div><!--end wrap5-->
+    </li><!--end codeccont5-->
   </ul><!--end container-->
   <div id="footer">
+      <a id="gear" onclick="popupSH();"><img onclick="popupSH();" src="img/gear.png" alt="Settings"/></a>
     <img src="./img/crest.png"/>
-    <p>Max Hewett | St. Cuthbert's College</p>
-    <a href="mailto:max.hewett@stcuthberts.school.nz"><img src="./img/help.png"/></a>
+    <p>Max Hewett | 2020</p>
+    <!--a id="help" href="mailto:max.hewett@stcuthberts.school.nz"><img src="./img/help.png"/></a>-->
   </div>
+    <div id="spin"><img src="./img/daynight.png"/></div>
 </body>
-
 </html>
